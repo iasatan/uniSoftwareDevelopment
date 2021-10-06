@@ -5,4 +5,6 @@ WORKDIR /node_server
 
 COPY node_server /node_server/
 
+RUN npm install
+
 EXPOSE 8080

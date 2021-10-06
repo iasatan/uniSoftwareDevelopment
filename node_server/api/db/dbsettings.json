@@ -1,0 +1,7 @@
+{
+    "connectionLimit": 300,
+    "host": "mysql",
+    "user": "root",
+    "password": "rootpw",
+    "database": "music_app"
+}

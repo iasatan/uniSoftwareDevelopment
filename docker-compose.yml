@@ -36,7 +36,7 @@ services:
         build:
             dockerfile: Docker/node_server/Dockerfile
             context: ./
-        command: npm start
+        command: npm run dev
         networks:
             - music_app
         volumes:
