@@ -15,3 +15,82 @@ INSERT INTO `genre` (`gid`, `name`, `parentId`) VALUES ('85', 'Bebop', '8');
 INSERT INTO `music` (`mid`, `filename`, `artist`, `title`, `album`, `comment`, `track`, `year`, `genre`, `path`, `filesize`, `copyright`, `layer`, `stereo`, `goodframes`, `badframes`, `frequency`, `playtime`) VALUES (NULL, 'coldheart.mp3', 'Elton John, Dua Lipa', 'Cold Heart', 'The Lockdown Sessions', NULL, '2', '2021', '13', 'home/downloads/coldheart.mp3', '4.11', 'Elthon John', 'layer', NULL, '2', '2', '22', '4');
 INSERT INTO `music` (`mid`, `filename`, `artist`, `title`, `album`, `comment`, `track`, `year`, `genre`, `path`, `filesize`, `copyright`, `layer`, `stereo`, `goodframes`, `badframes`, `frequency`, `playtime`) VALUES (NULL, 'nevergoinghome.mp3', 'Kungs', 'Never Going Home', 'Never Going Home: Remixes', NULL, '2', '2021', '13', 'home/downloads/nevergoinghome.mp3', '3.91', 'Val Production', NULL, 'yes', '5', '5', '22', '4');
 INSERT INTO `music` (`mid`, `filename`, `artist`, `title`, `album`, `comment`, `track`, `year`, `genre`, `path`, `filesize`, `copyright`, `layer`, `stereo`, `goodframes`, `badframes`, `frequency`, `playtime`) VALUES (NULL, 'WAWW.mp3', 'Louis Armstrong', 'What A Wonderful World', 'What A Wonderful World', NULL, '1', '1967', '8', 'home/downloads/WAWW.mp3', '3.7', 'UMG', NULL, NULL, '3', '1', '10', '2.30');
+
+insert into user(name, email, password, gender, address, typeOfResidence) values ("Megyeri Balázs", "mrbalazs@gmail.com", "12345678", "male", "Miskolc", "flat")
+insert into genre(gid, name) values (2, "jazz"), (3, "funk"), (4, "electronic")
+
+insert into music(
+    filename,
+    artist,
+    title,
+    album,
+    comment,
+    track,
+    year,
+    genre,
+    path,
+    filesize,
+    copyright,
+    layer,
+    stereo,
+    goodframes,
+    badframes,
+    frequency,
+    playtime
+) values (
+    "spanom.mp3", 
+    "Dzsúdló", 
+    "SPANOM", 
+    "Fotofóbia", 
+    "Comment", 
+    10, 
+    2020, 
+    "pop", 
+    "/music/spanom.mp3", 
+    255, 
+    "copyright1", 
+    "layer1", 
+    "stereo1", 
+    100, 
+    0, 
+    30, 
+    211
+  ),
+  (
+    "mindenki_tancol.mp3", 
+    "Majka", 
+    "Mindenki táncol", 
+    "Mindenki táncol", 
+    "Comment2", 
+    1, 
+    2017, 
+    "pop", 
+    "/music/mindenki_tancol.mp3", 
+    255, 
+    "copyright2", 
+    "layer2", 
+    "stereo2", 
+    100, 
+    5, 
+    100, 
+    328
+  ),
+   (
+    "requiem.mp3", 
+    "W.A. Mozart", 
+    "Requiem in D minor", 
+    "Requiem in D minor", 
+    "Comment3", 
+    1, 
+    1791, 
+    "classic", 
+    "/music/requiem.mp3", 
+    255, 
+    "copyright3", 
+    "layer3", 
+    "stereo3", 
+    100, 
+    0, 
+    500, 
+    533
+  )
