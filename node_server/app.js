@@ -13,19 +13,27 @@ app.listen(port, () => {
 
 app.get('/users', (req, res) => {
     let getUsers = 'select * from user';
+    let create = 'create table user(uid int primary key auto_increment, name varchar(100) not null, email varchar(50) not null, password varchar(100) not null, gender enum("m","f", "o") not null, address varchar(100), typeOfResidence enum("flat", "detached house", "cottage", "mansion","dormitory"))';
+    let postData = 'INSERT INTO user (uid, name, email, password, gender, address, typeOfResidence) VALUES (NULL, "Fanni", "goz@uni-miskolc.hu", "pW1o2V", "f", "Miskolc", "flat")';
     db.query(getUsers, (err, result) => {
         if(err) {
+            
+            db.query(create);
             console.log(err);
-            return res.status(400).send();
+            db.query(postData);
+            //return res.status(400).send();
         }
 
         if(result == null) {
-            console.log(result);
-            return res.status(400).send();
+            
+            //console.log(result);
+            //return res.status(400).send();
         }
 
         return res.send(result);
     });
 })
+
+
 
 app.use(express.static(path.join(__dirname, 'public')));
