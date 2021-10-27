@@ -4,9 +4,11 @@ const path = require('path');
 const port = process.env.PORT || 8080;
 
 const db = require('./api/db/db');
+const user = require('./api/user');
 
 const app = express();
 
+app.use(user);
 app.listen(port, () => {
     console.log('Server is running on ' + port + ".");
 });
@@ -14,12 +16,12 @@ app.listen(port, () => {
 app.get('/users', (req, res) => {
     let getUsers = 'select * from user';
     db.query(getUsers, (err, result) => {
-        if(err) {
+        if (err) {
             console.log(err);
             return res.status(400).send();
         }
 
-        if(result == null) {
+        if (result == null) {
             console.log(result);
             return res.status(400).send();
         }

@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/iasatan/uniSoftwareDevelopment#readme",
   "dependencies": {
+    "bcrypt": "^5.0.1",
     "express": "^4.17.1",
     "mysql-await": "^2.1.8",
     "nodemon": "^2.0.13",
