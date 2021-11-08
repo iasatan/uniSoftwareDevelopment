@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcrypt');
+const db = require('./db/db');
 
 router.post('/signup', (req, res) => {
     let user = {
@@ -32,4 +33,4 @@ router.post('/signup', (req, res) => {
 
 })
 
-module.export = router;
+module.exports = router;
