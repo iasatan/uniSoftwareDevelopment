@@ -9,16 +9,7 @@
                         <h4><b>{{music.title}}</b></h4>
                         <p>{{music.album}} & {{music.artist}}</p>
                     </div>
-                </div>
-
-                <div class="card">
-                    <img class="imgCard" src="../img/musicCard.png" alt="Avatar" style="width:100%">
-                    <div class="container">
-                        <h4><b>Title</b></h4>
-                        <p>Album & Artist</p>
-                    </div>
-                </div>
-                 
+                </div>      
         </div>
             
     </main>
@@ -26,7 +17,7 @@
 
 <script>
     import axios from 'axios';
-    let url='http://http://localhost:8081/api/music'
+    let url='http://localhost:8080/api/music'
     export default {
         name: 'HomePage',
         data(){
