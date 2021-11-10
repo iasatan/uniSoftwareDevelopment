@@ -3,6 +3,22 @@ const router = express.Router();
 const bcrypt = require('bcrypt');
 const db = require('./db/db');
 
+router.get('/users', (req, res) => {
+    let getUsers = 'select * from user';
+    db.query(getUsers, (err, result) => {
+        if (err) {
+            console.log(err);
+            return res.status(400).send();
+        }
+
+        if (result == null) {
+            console.log(result);
+            return res.status(400).send();
+        }
+
+        return res.send(result);
+    });
+})
 router.post('/signup', (req, res) => {
     let user = {
         name: req.body.name,
