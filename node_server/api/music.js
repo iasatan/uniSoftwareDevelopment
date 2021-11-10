@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const db = require('./db/db');
 
-router.get('/music', (req, res) => {
+router.get('/api/music', (req, res) => {
     let getMusicQuery = 'select * from music';
     
     db.query(getMusicQuery, (err, result) => {
