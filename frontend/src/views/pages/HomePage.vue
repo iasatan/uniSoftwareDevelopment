@@ -6,8 +6,8 @@
                 <div class="card">
                     <img class="imgCard" src="../img/musicCard.png" alt="Avatar" style="width:100%">
                     <div class="container">
-                        <h4><b>Title</b></h4>
-                        <p>Album & Artist</p>
+                        <h4><b>{{music.title}}</b></h4>
+                        <p>{{music.album}} & {{music.artist}}</p>
                     </div>
                 </div>
 
