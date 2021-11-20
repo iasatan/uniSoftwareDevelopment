@@ -1,25 +1,25 @@
 <template>
   <main>
-    <h1 align="left">Sign up</h1>
+    <h1>Sign up</h1>
   </main>
 
   <div id="registrationForm">
-    <form @submit="signUp" method="post">
+    <form @submit.prevent="processForm(formData)" method="post">
       <div>
         <label for="name">Name: </label>
-        <input name="name" v-model="name" placeholder="name" required="required">
+        <input name="name" v-model="formData.name" placeholder="Name" required="required">
       </div>
       <div>
         <label for="email">Email: </label>
-        <input type="email" name="email" v-model="email" placeholder="email" required="required">
+        <input type="email" name="email" v-model="formData.email" placeholder="email" required="required">
       </div>
       <div>
         <label for="password">Password: </label>
-        <input name="password" v-model="password" placeholder="password" type="password" required="required">
+        <input name="password" v-model="formData.password" placeholder="password" type="password" required="required">
       </div>
       <div>
         <label for="gender">Gender: </label>
-        <select required id="gender" v-model="gender" name="gender" >
+        <select required id="gender" v-model="formData.gender" name="gender" >
           <option hidden>Pls select</option>
           <option value="m">Male</option>
           <option value="f">Female</option>
@@ -28,11 +28,11 @@
       </div>
       <div>
         <label for="address">Address: </label>
-        <input name="address" v-model="address" placeholder="address">
+        <input name="address" v-model="formData.address" placeholder="address">
       </div>
       <div>
         <label for="typeOfResidence">Type of residence: </label>
-        <select required id="typeOfResidence" v-model="typeOfResidence" name="typeOfResidence" >
+        <select required id="typeOfResidence" v-model="formData.typeOfResidence" name="typeOfResidence" >
           <option disabled selected hidden>Pls select</option>
           <option value="flat">Flat</option>
           <option value="detached house">Detached house</option>
@@ -45,24 +45,45 @@
     </form>
   </div>
 
-
 </template>
 
-
-
 <script>
+import axios from "axios";
+import router from "../../router";
+
 export default {
   name: 'Registration',
   data ()
   {
     return {
-      errors: [],
-      name: null,
-      email: null,
-      password: null,
-      gender: null,
-      address: null,
-      typeOfResidence: null
+      formData: {
+        errors: [],
+        name: '',
+        email: '',
+        password: '',
+        gender: '',
+        address: '',
+        typeOfResidence: ''
+      }
+    }
+  },
+  methods : {
+    processForm: function (formData) {
+
+      axios.post(`http://localhost:3000/signup`, {
+            name: formData.name,
+            email: formData.email,
+            password: formData.password,
+            gender: formData.gender,
+            address: formData.address,
+            typeOfResidence: formData.typeOfResidence
+          }).then(function (response) {
+            console.log(response);
+      }).catch(e => {
+              console.log(e);
+            });
+      alert('Registration successfull.');
+      router.push('HomePage');
     }
   }
 }
@@ -76,10 +97,10 @@ export default {
     box-sizing: border-box;
     border-radius: 4px;
     border: 2px solid green;
-    float: right;
+    alignment: center;
   }
 
- option {
+  option {
    padding: 12px;
    margin: 8px 0;
  }
@@ -87,23 +108,25 @@ export default {
   label {
     padding: 12px 12px 12px 0;
     display: inline-block;
-    float: right;
+    alignment: center;
     width: 75%;
     margin-top: 6px;
     font-weight: bold;
     font-size: larger;
   }
+
   input:focus {
     background-color: lightblue;
   }
-  input[type=submit]:hover {
-    background-color: #45a049;
+
+  input[type = submit] {
+    font-weight: bold;
+    font-size: larger;
   }
 
-
-
- #registrationForm {
-align-content: center;
- }
+  input[type=submit]:hover {
+    background-color: #45a049;
+    color: white;
+  }
 
 </style>
