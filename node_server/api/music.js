@@ -2,9 +2,12 @@ const express = require('express');
 const router = express.Router();
 const db = require('./db/db');
 
-router.get('/api/music', (req, res) => {
-    let getMusicQuery = 'select * from music';
-    
+router.get('/music', (req, res) => {
+    let type = Object.keys(req.query).toString();
+    let value = Object.values(req.query).toString();
+
+    let getMusicQuery = 'select artist, title from music where ' + type + '=\'' + value + '\'';
+
     db.query(getMusicQuery, (err, result) => {
         if (err) {
             console.log(err);
