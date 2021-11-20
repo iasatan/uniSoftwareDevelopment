@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomePage from '../views/pages/HomePage.vue'
 import AboutPage from '../views/pages/AboutPage.vue'
+import UserAdminPage from "../views/pages/UserAdminPage";
 
 const routes = [
   {
@@ -12,6 +13,11 @@ const routes = [
     path: '/about',
     name: 'AboutPage',
     component: AboutPage
+  },
+  {
+    path: '/useradmin',
+    name: 'UserAdminPage',
+    component: UserAdminPage
   }
 ]
 
