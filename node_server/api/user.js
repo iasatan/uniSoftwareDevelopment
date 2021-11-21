@@ -19,6 +19,7 @@ router.get('/users', (req, res) => {
         return res.send(result);
     });
 })
+
 router.post('/signup', (req, res) => {
     let user = {
         name: req.body.name,

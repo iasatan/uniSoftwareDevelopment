@@ -10,27 +10,19 @@ const music = require('./api/music');
 const app = express();
 
 app.use(express.json());
+
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Methods', 'GET,HEAD,PUT,PATCH,POST,DELETE');
+    res.header('Access-Control-Allow-Headers', 'Content-Type, Accept');
+    next();
+});
+
 app.use(user);
 app.use(music);
+
 app.listen(port, () => {
     console.log('Server is running on ' + port + ".");
 });
-
-app.get('/users', (req, res) => {
-    let getUsers = 'select * from user';
-    db.query(getUsers, (err, result) => {
-        if (err) {
-            console.log(err);
-            return res.status(400).send();
-        }
-
-        if (result == null) {
-            console.log(result);
-            return res.status(400).send();
-        }
-
-        return res.send(result);
-    });
-})
 
 app.use(express.static(path.join(__dirname, 'public')));
