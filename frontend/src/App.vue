@@ -49,6 +49,7 @@ export default {
 
 #nav .menu-right {
   float: right;
+}
 
 .card {
   /* Add shadows to create the "card" effect */
