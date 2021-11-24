@@ -1,24 +1,21 @@
-import Vue from 'vue';
-import Vuex from 'vuex';
+import { createStore } from 'vuex';
 import Axios from 'axios';
 import createPersistedState from 'vuex-persistedstate';
 
-Vue.use(Vuex);
-
 const getDefaultState = () => {
     return {
-        token: 'SECRETKEY',
-        user: {}
+        token: '',
+        user: null
     };
 };
 
-export default new Vuex.Store({
+export default createStore({
     strict: true,
     plugins: [createPersistedState()],
     state: getDefaultState(),
     getters: {
         isLoggedIn: state => {
-            return state.token;
+            return !!state.token;
         },
         getUser: state => {
             return state.user;
@@ -36,14 +33,15 @@ export default new Vuex.Store({
         }
     },
     actions: {
-        login: ({commit, dispatch}, {token, user}) => {
+        login: ({ commit, dispatch }, {token, user}) => {
             commit('SET_TOKEN', token);
             commit('SET_USER', user);
             dispatch;
+
             // set auth header
             Axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
         },
-        logout: ({commit}) => {
+        logout: ({ commit }) => {
             commit('RESET', '');
         }
     }
