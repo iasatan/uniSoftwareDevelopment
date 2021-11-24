@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomePage from '../views/pages/HomePage.vue'
 import AboutPage from '../views/pages/AboutPage.vue'
+import Registration from "../views/pages/Registration";
 import LoginPage from '../views/pages/LoginPage.vue'
 import store from '../store'
 import UserAdminPage from "../views/pages/UserAdminPage";
@@ -18,6 +19,11 @@ const routes = [
     meta: {
       requiresAdmin: true
     }
+  },
+  {
+    path: '/signUp',
+    name: 'Registration',
+    component: Registration
   },
   {
     path: '/login',

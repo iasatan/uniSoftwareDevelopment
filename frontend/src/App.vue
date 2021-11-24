@@ -1,13 +1,15 @@
 <template>
   <div id="nav">
     <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+    <router-link to="/about">About</router-link> |
+    <router-link to="/signUp">Sign up</router-link>
     <div class="menu-right">
       <router-link v-if="!this.isLoggedIn" to="/login">Login</router-link>
       <a href="#" v-if="this.isLoggedIn" v-on:click="this.logout()">Logout</a>
     </div>
   </div>
   <router-view/>
+
 </template>
 
 <script>
