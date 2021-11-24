@@ -1,4 +1,5 @@
 const express = require('express');
+//const cors = require('cors');
 const path = require('path');
 
 const port = process.env.PORT || 8080;
@@ -11,6 +12,13 @@ const app = express();
 
 app.use(express.json());
 
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Methods', 'GET,HEAD,PUT,PATCH,POST,DELETE');
+    res.header('Access-Control-Allow-Headers', 'Content-Type, Accept');
+    next();
+});
+//app.use(cors);
 app.use(user);
 app.use(music);
 
