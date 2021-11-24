@@ -23,6 +23,22 @@ router.get('/users', (req, res) => {
     });
 });
 
+router.get('/users/:uid', (req, res) => {
+    let getUsersId = 'select * from user where uid = ' + req.params.uid + ';';
+    db.query(getUsersId, (err, result) => {
+        if (err) {
+            console.log(err);
+            return res.status(400).send();
+        }
+
+        if (result == null) {
+            console.log(result);
+            return res.status(400).send();
+        }
+
+        return res.send(result);
+    });
+})
 router.post('/signup', (req, res) => {
     let user = {
         name: req.body.name,
@@ -101,5 +117,49 @@ router.post('/signin', (req, res) => {
         });
     });
 });
+
+router.delete('/users/:uid',(req, res)=>{
+    let deleteUser = 'delete from user where uid = ' + req.params.uid + ';';
+    db.query(deleteUser, (err, result)=>{
+        if (err) {
+            console.log(err);
+            return res.status(400).send();
+        }
+
+        if (result == null) {
+            console.log(result);
+            return res.status(400).send();
+        }
+
+        return res.send(result);
+
+    })
+})
+
+router.put('/users/:uid', (req, res) => {
+    let user = {
+        //uid: req.body.uid,
+        name: req.body.name,
+        email: req.body.email,
+        password: req.body.password,
+        gender: req.body.gender,
+        address:req.body.address,
+        typeOfResidence: req.body.typeOfResidence,
+    };
+    let updateUser = "UPDATE user SET name='"+user.name +"',email='"+user.email+"', password='"+user.password+"',gender='"+user.gender+"',address='"+user.address+"',typeOfResidence='"+user.typeOfResidence+"' WHERE uid = '" + req.params.uid + "';";
+    db.query(updateUser, (err, result) => {
+        if (err) {
+            console.log(err);
+            return res.status(400).send();
+        }
+
+        if (result == null) {
+            console.log(result);
+            return res.status(400).send();
+        }
+
+        return res.send(result);
+    });
+})
 
 module.exports = router;

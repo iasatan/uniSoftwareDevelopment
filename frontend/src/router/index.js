@@ -3,6 +3,7 @@ import HomePage from '../views/pages/HomePage.vue'
 import AboutPage from '../views/pages/AboutPage.vue'
 import LoginPage from '../views/pages/LoginPage.vue'
 import store from '../store'
+import UserAdminPage from "../views/pages/UserAdminPage";
 
 const routes = [
   {
@@ -22,6 +23,11 @@ const routes = [
     path: '/login',
     name: 'LoginPage',
     component: LoginPage
+  },
+  {
+    path: '/useradmin',
+    name: 'UserAdminPage',
+    component: UserAdminPage
   }
 ];
 
