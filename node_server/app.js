@@ -1,5 +1,4 @@
 const express = require('express');
-//const cors = require('cors');
 const path = require('path');
 const cors = require("cors");
 
@@ -20,7 +19,7 @@ app.use((req, res, next) => {
     res.header('Access-Control-Allow-Headers', 'Content-Type, Accept');
     next();
 });
-//app.use(cors);
+
 app.use(user);
 app.use(music);
 
